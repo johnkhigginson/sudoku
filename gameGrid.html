@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+        <title>Sudoku</title>
+        <link rel="icon" type="image/png" href="images/s_favicon.png"/>
+        <script language="text/javascript" src="C:/Users/johnk/Desktop/CS2550/assignment_1/data.js"></script>
+        <link rel="stylesheet" href="data.css">
+        <link href="https://fonts.googleapis.com/css2?family=Muli&display=swap" rel="stylesheet">
+        <div class="navbar">
+          <a class="logo">
+            <img src="images/s_favicon.png" alt="" height="28px" width="28px">
+          </a>
+          <a class="extra" href="gameGrid.html">Sudoku</a>
+          <a class="extra" href="index.html">Description</a>
+        </div>
+    </head>
+
+    <body>
+      <br><br>
+      <table cellspacing="0" cellpadding="0" class="center maintable">
+        <tbody>
+          <tr>
+            <td class="bigcell">
+              <table cellspacing="1" cellpadding="0" class="center">
+                <tbody>
+                  <tr>
+                    <td class="cell" id="00"></td>
+                    <td class="cell" id="01"></td>
+                    <td class="cell" id="02"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="09"></td>
+                    <td class="cell" id="10"></td>
+                    <td class="cell" id="11"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="18"></td>
+                    <td class="cell" id="19"></td>
+                    <td class="cell" id="20"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="bigcell">
+              <table cellspacing="1" cellpadding="0" class="center">
+                <tbody>
+                  <tr>
+                    <td class="cell" id="03"></td>
+                    <td class="cell" id="04"></td>
+                    <td class="cell" id="05"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="12"></td>
+                    <td class="cell" id="13"></td>
+                    <td class="cell" id="14"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="21"></td>
+                    <td class="cell" id="22"></td>
+                    <td class="cell" id="23"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="bigcell">
+              <table cellspacing="1" cellpadding="0" class="center">
+                <tbody>
+                  <tr>
+                    <td class="cell" id="06"></td>
+                    <td class="cell" id="07"></td>
+                    <td class="cell" id="08"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="15"></td>
+                    <td class="cell" id="16"></td>
+                    <td class="cell" id="17"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="24"></td>
+                    <td class="cell" id="25"></td>
+                    <td class="cell" id="26"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="bigcell">
+              <table cellspacing="1" cellpadding="0" class="center">
+                <tbody>
+                  <tr>
+                    <td class="cell" id="27"></td>
+                    <td class="cell" id="28"></td>
+                    <td class="cell" id="29"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="36"></td>
+                    <td class="cell" id="37"></td>
+                    <td class="cell" id="38"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="45"></td>
+                    <td class="cell" id="46"></td>
+                    <td class="cell" id="47"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="bigcell">
+              <table cellspacing="1" cellpadding="0" class="center">
+                <tbody>
+                  <tr>
+                    <td class="cell" id="30"></td>
+                    <td class="cell" id="31"></td>
+                    <td class="cell" id="32"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="39"></td>
+                    <td class="cell" id="40"></td>
+                    <td class="cell" id="41"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="48"></td>
+                    <td class="cell" id="49"></td>
+                    <td class="cell" id="50"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="bigcell">
+              <table cellspacing="1" cellpadding="0" class="center">
+                <tbody>
+                  <tr>
+                    <td class="cell" id="33"></td>
+                    <td class="cell" id="34"></td>
+                    <td class="cell" id="35"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="42"></td>
+                    <td class="cell" id="43"></td>
+                    <td class="cell" id="44"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="51"></td>
+                    <td class="cell" id="52"></td>
+                    <td class="cell" id="53"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="bigcell">
+              <table cellspacing="1" cellpadding="0" class="center">
+                <tbody>
+                  <tr>
+                    <td class="cell" id="54"></td>
+                    <td class="cell" id="55"></td>
+                    <td class="cell" id="56"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="63"></td>
+                    <td class="cell" id="64"></td>
+                    <td class="cell" id="65"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="72"></td>
+                    <td class="cell" id="73"></td>
+                    <td class="cell" id="74"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="bigcell">
+              <table cellspacing="1" cellpadding="0" class="center">
+                <tbody>
+                  <tr>
+                    <td class="cell" id="57"></td>
+                    <td class="cell" id="58"></td>
+                    <td class="cell" id="59"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="66"></td>
+                    <td class="cell" id="67"></td>
+                    <td class="cell" id="68"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="75"></td>
+                    <td class="cell" id="76"></td>
+                    <td class="cell" id="77"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="bigcell">
+              <table cellspacing="1" cellpadding="0" class="center">
+                <tbody>
+                  <tr>
+                    <td class="cell" id="60"></td>
+                    <td class="cell" id="61"></td>
+                    <td class="cell" id="62"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="69"></td>
+                    <td class="cell" id="70"></td>
+                    <td class="cell" id="71"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="78"></td>
+                    <td class="cell" id="79"></td>
+                    <td class="cell" id="80"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <div class="center">
+        <button onclick="newBoard()" class="d_link">New Board</button>
+        <button onclick="check()" class="d_link">Check</button>
+        <button onclick="pattern()" class="d_link">Pattern</button>
+      </div>
+      <br><br>
+      <script src="data.js"></script>
+    </body>
+    <div class="footer">
+      <footer>
+        <p>John K Higginson</p>
+        <a href="mailto:10854444@my.uvu.edu" target="_blank">Contact</a>
+      </footer>
+    </div>
+  </html>

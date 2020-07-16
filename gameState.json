@@ -1,0 +1,20 @@
+gamestate {
+  "sizes": [4, 9],
+  "difficulty": [1, 2, 3, 4],
+  "default_size": 9,
+  "default_level": 1,
+  "current_size": 9,
+  "current_level": 1,
+  "squares": [
+    {"x": 0, "y": 0, "value": 2},
+    {"x": 1, "y": 8, "value": 2},
+    {"x": 2, "y": 3, "value": 2},
+    {"x": 3, "y": 4, "value": 2},
+    {"x": 4, "y": 8, "value": 2},
+    {"x": 5, "y": 1, "value": 2},
+    {"x": 6, "y": 7, "value": 2},
+    {"x": 7, "y": 2, "value": 2},
+    {"x": 8, "y": 8, "value": 2}
+    ...
+  ]
+}

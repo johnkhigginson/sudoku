@@ -1,0 +1,141 @@
+body {
+  background-color: #dadff7;
+}
+h1 {
+  color: #5a7d7c;
+  background-color: #b5b2c2;
+  border: #232c33;
+  padding: 15px 32px;
+  font-size: 32px;
+  text-align: center;
+}
+p {
+  color: #5a7d7c;
+}
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+table.maintable {
+  box-shadow: 0 12px 16px 0 rgba(90,125,124,0.24), 0 17px 50px 0 rgba(90,125,124,0.19);
+}
+td.bigcell {
+  margin: 0px;
+  padding: 0px;
+  border: 2px solid #b5b2c2;
+}
+.cell {
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 36px;
+  font-family: 'Muli', sans-serif;
+  color: #232c33;
+  border: 2px solid #5a7d7c;
+  background-color: #a0c1d1;
+  padding: 2px;
+  margin: 2px;
+}
+.cell:hover {
+  background-color: #5a7d7c;
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+/*header*/
+.navbar {
+  background-color: #232c33;
+  overflow: hidden;
+  font-family: impact;
+}
+.navbar a {
+  float: left;
+  color: #b5b2c2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  height: 28px;
+}
+.navbar a.extra:hover {
+  background-color: #b5b2c2;
+  color: black;
+}
+.navbar a.active {
+  background-color: #5a7d7c;
+  color: #232c33;
+  font-size: 28px;
+  font-weight: bold;
+}
+.topnav a.active:hover {
+  background-color: black;
+  color: #dadff7;
+}
+img:hover {
+  background-color: #232c33;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #232c33;
+  text-align: center;
+}
+.s_image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+}
+.d_link {
+  background-color: #5a7d7c;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.d_link:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.center {
+  text-align: center;
+}
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+
+.inputcell {
+  height: 48px;
+  width: 48px;
+  background: transparent;
+  box-sizing: border-box;
+  font-size: 36px;
+  font-family: 'Muli', sans-serif;
+  padding: 0px;
+  border: 2px;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+}
+.inputcell:hover {
+  background-color: #5a7d7c;
+}
