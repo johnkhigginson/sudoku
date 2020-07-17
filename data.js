@@ -32,12 +32,12 @@ function newBoard() {
   for (var i = 0; i < boardLength; i++) {
     document.getElementById(board[i]).style.background = "#a0c1d1";
     document.getElementById(board[i]).style.border = "2px solid #5a7d7c";
-    document.getElementById(board[i]).innerHTML = '<div class="staticcell">' + /*Math.floor(Math.random() * 9 + 1)*/board[i] + '</div>';
+    document.getElementById(board[i]).innerHTML = '<div class="staticcell">' + Math.floor(Math.random() * 9 + 1) + '</div>';
   }
-  /*for (var i = 0; i < 80; i++) {
+  for (var i = 0; i < 80; i++) {
     var rand = Math.floor(Math.random() * 81);
     document.getElementById(board[rand]).innerHTML = '<div id="' + board[rand] + '"><input + class="inputcell" maxlength="1"></div>'
-  }*/
+  }
 };
 
 //Number.isInteger()
