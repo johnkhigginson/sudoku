@@ -32,12 +32,12 @@ function newBoard() {
   for (var i = 0; i < boardLength; i++) {
     document.getElementById(board[i]).style.background = "#a0c1d1";
     document.getElementById(board[i]).style.border = "2px solid #5a7d7c";
-    document.getElementById(board[i]).innerHTML = '<div class="staticcell">' + Math.floor(Math.random() * 9 + 1) + '</div>';
+    document.getElementById(board[i]).innerHTML = '<div class="staticcell">' + /*Math.floor(Math.random() * 9 + 1)*/board[i] + '</div>';
   }
-  for (var i = 0; i < 80; i++) {
+  /*for (var i = 0; i < 80; i++) {
     var rand = Math.floor(Math.random() * 81);
     document.getElementById(board[rand]).innerHTML = '<div id="' + board[rand] + '"><input + class="inputcell" maxlength="1"></div>'
-  }
+  }*/
 };
 
 //Number.isInteger()
@@ -109,12 +109,47 @@ function pattern() {
       tlength = tones[i].length;
       list = tones[i];
       color = colors[i];
-      console.log(color)
       for (var y = 0; y < tlength; y++) {
         document.getElementById(list[y]).style.background = color;
       }
     }
-  clicks = 0
+  }
+  if (clicks == 4) {
+    var tone1 = ["00", "08", "16", "24", "24", "32", "40", "48", "56", "64", "72", "80"];
+    var tone2 = ["07", "15", "23", "31", "39", "47", "55", "63", "73", "65", "57", "49", "41", "33", "25", "17"];
+    var tone3 = ["06", "14", "22", "30", "38", "46", "54", "74", "66", "58", "50", "42", "34", "26"];
+    var tone4 = ["05", "13", "21", "29", "37", "45", "35", "43", "51", "59", "67", "75"];
+    var tone5 = ["04", "12", "20", "28", "36", "44", "52", "60", "68", "76"];
+    var tone6 = ["03", "11", "19", "27", "53", "61", "69", "77"];
+    var tone7 = ["62", "70", "78", "02", "10", "18"];
+    var tone8 = ["01", "09", "71", "79"];
+    var tones = [tone1, tone2, tone3, tone4, tone5, tone6, tone7, tone8];
+    var colors = ["#123b32", "#046350", "#2f9682", "#20a187", "#14b393", "#58e0c5", "#95fce8", "#c3faef"]
+    for (var i = 0; i < 8; i++) {
+      tlength = tones[i].length;
+      list = tones[i];
+      color = colors[i];
+      for (var y = 0; y < tlength; y++) {
+        document.getElementById(list[y]).style.background = color;
+      }
+    }
+  }
+  if (clicks == 5) {
+    beg = -1;
+    var colors = ["#031238", "#091b4a", "#021b5c", "#052578", "#0637b1", "#1147d0", "#2b58ca", "#5077d9"];
+    for (var i = 0; i < 8; i++) {
+      color = colors[i];
+      start = beg + 1;
+      beg = beg + 1;
+      console.log(color)
+      for (var y = 0; y < 10; y++) {
+        document.getElementById(board[start]).style.background = color;
+        console.log(start)
+        start = start + 8;
+      }
+    }
+    document.getElementById(board[80]).style.background = colors[0];
+    clicks = 0;
   }
 };
 
