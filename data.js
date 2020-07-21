@@ -1,14 +1,28 @@
-var puzzle = [
-  [00, 01, 02, 03, 04, 05, 06, 07, 08],
-  [09, 10, 11, 12, 13, 14, 15, 16, 17],
-  [18, 19, 20, 21, 22, 23, 24, 25, 26],
-  [27, 28, 29, 30, 31, 32, 33, 34, 35],
-  [36, 37, 38, 39, 40, 41, 42, 43, 44],
-  [45, 46, 47, 48, 49, 50, 51, 52, 53],
-  [54, 55, 56, 57, 58, 59, 60, 61, 62],
-  [63, 64, 65, 66, 67, 68, 69, 70, 71],
-  [72, 73, 74, 75, 76, 77, 78, 79, 80]
+var samplePuzzle = [
+    4, 3, 5, 2, 6, 9, 7, 8, 1,
+    6, 8, 2, 8, 7, 1, 4, 9, 3,
+    1, 9, 7, 8, 3, 4, 5, 6, 2,
+    8, 2, 6, 1, 9, 5, 3, 4, 7,
+    3, 7, 4, 6, 8, 2, 9, 1, 5,
+    9, 5, 1, 7, 4, 3, 6, 8, 2,
+    5, 1, 9, 3, 2, 6, 8, 7, 4,
+    2, 4, 8, 9, 5, 7, 1, 3, 6,
+    7, 6, 3, 4, 1, 8, 2, 5, 9
 ];
+
+var blankPuzzle = [
+  0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0,
+]
+
+var inputCells = [];
 
 var board = [
     "00", "01", "02", "03", "04", "05", "06", "07", "08",
@@ -26,25 +40,41 @@ var boardLength = board.length;
 
 
 function newBoard() {
+  /*resets cell colors and size if pattern was set*/
   for (i = 0; i < cells.length; i++) {
     cells[i].style.border = "2px solid #b5b2c2";
   }
-  for (var i = 0; i < boardLength; i++) {
-    document.getElementById(board[i]).style.background = "#a0c1d1";
-    document.getElementById(board[i]).style.border = "2px solid #5a7d7c";
-    document.getElementById(board[i]).innerHTML = '<div class="staticcell">' + Math.floor(Math.random() * 9 + 1) + '</div>';
+  inputCells = [];
+  var temp = [];
+
+  /*resets board before creating new one*/
+  for (i = 0; i < boardLength; i++) {
+    document.getElementById(board[i]).innerHTML = '<div><input  id="' + board[i] + '" class="inputcell" maxlength="1"></div>';
+    blankPuzzle[i] = 0;
+    temp.push(i);
   }
-  for (var i = 0; i < 80; i++) {
-    var rand = Math.floor(Math.random() * 81);
-    document.getElementById(board[rand]).innerHTML = '<div id="' + board[rand] + '"><input + class="inputcell" maxlength="1"></div>'
+
+  j = 24;
+  /*randomly selects 24 cells to be pre-filled*/
+  while (j--) {
+    var rand = Math.floor(Math.random() * temp.length);
+    var ran = temp[rand];
+    document.getElementById(board[ran]).innerHTML = '<div class="staticcell">' + samplePuzzle[ran] + '</div>';
+    blankPuzzle[ran] = samplePuzzle[ran];
+    temp.splice(rand, 1);
+    }
+
+  for (var i = 0; i < temp.length; i++) {
+    var ran = temp[i]
+    inputCells.push(ran)
+    document.getElementById(board[ran]).innerHTML = '<div><input  id="' + board[ran] + '" class="inputcell" maxlength="1"></div>'
   }
 };
 
 //Number.isInteger()
 function check() {
-  for (var i = 0; i < 5; i++) {
-    var rand = Math.floor(Math.random() * 81);
-    document.getElementById(board[rand]).style.background = "#D89A9E";
+  for (var i = 0; i < inputCells.length; i++) {
+    console.log(document.getElementById(inputCells[i]).value)
   }
 };
 
@@ -141,10 +171,8 @@ function pattern() {
       color = colors[i];
       start = beg + 1;
       beg = beg + 1;
-      console.log(color)
       for (var y = 0; y < 10; y++) {
         document.getElementById(board[start]).style.background = color;
-        console.log(start)
         start = start + 8;
       }
     }
