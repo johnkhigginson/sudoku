@@ -24,6 +24,8 @@ var blankPuzzle = [
 
 var inputCells = [];
 
+var difficulty = 0;
+
 var board = [
     "00", "01", "02", "03", "04", "05", "06", "07", "08",
     "09", "10", "11", "12", "13", "14", "15", "16", "17",
@@ -38,11 +40,29 @@ var board = [
 
 var boardLength = board.length;
 
+function easy() {
+  difficulty = 1;
+  document.getElementById("grid").click()
+}
+function med() {
+  difficulty = 2;
+  document.getElementById("grid").click()
+}
+function hard() {
+  difficulty = 3;
+  document.getElementById("grid").click()
+}
 
 function newBoard() {
   /*resets cell colors and size if pattern was set*/
   for (i = 0; i < cells.length; i++) {
     cells[i].style.border = "2px solid #b5b2c2";
+    cells[i].style.color = "#a0c1d1";
+  }
+  for (var i = 0; i < boardLength; i++) {
+    document.getElementById(board[i]).style.background = "#a0c1d1";
+    document.getElementById(board[i]).style.border = "2px solid #5a7d7c";
+    document.getElementById(board[i]).innerHTML = '<span class="staticcell">' + samplePuzzle[i] + '</span>';
   }
   inputCells = [];
   var temp = [];
@@ -67,14 +87,41 @@ function newBoard() {
   for (var i = 0; i < temp.length; i++) {
     var ran = temp[i]
     inputCells.push(ran)
-    document.getElementById(board[ran]).innerHTML = '<div><input  id="' + board[ran] + '" class="inputcell" maxlength="1"></div>'
+    document.getElementById(board[ran]).innerHTML = '<input  id="' + board[ran] + '" class="inputcell" maxlength="1">'
   }
 };
 
 //Number.isInteger()
 function check() {
-  for (var i = 0; i < inputCells.length; i++) {
-    console.log(document.getElementById(inputCells[i]).value)
+
+  var currentBoard = [];
+  var errors = 0;
+  var squares = document.getElementsByClassName("cell");
+
+  for (var i = 0; i < boardLength; i++) {
+    document.getElementById(board[i]).style.background = "#a0c1d1";
+  }
+
+  for (var i = 0; i < boardLength; i++) {
+    var el = document.getElementById(board[i]);
+    var child = el.children[0];
+    if (child.tagName == "INPUT") {
+      currentBoard.push(parseInt(child.value));
+    }
+    else if (child.tagName == "DIV") {
+      currentBoard.push(parseInt(child.textContent));
+    }
+  }
+  for (i = 0; i < samplePuzzle.length; i++) {
+    if (samplePuzzle[i] != currentBoard[i]) {
+      document.getElementById(board[i]).style.background = "#D89A9E";
+    }
+    else {
+      errors = errors + 1;
+    }
+  }
+  if (errors = 81) {
+    document.getElementById("home").click()
   }
 };
 
