@@ -116,13 +116,13 @@ function check() {
     if (samplePuzzle[i] != currentBoard[i]) {
       document.getElementById(board[i]).style.background = "#D89A9E";
     }
-    else {
+    /*else {
       errors = errors + 1;
-    }
+    }*/
   }
-  if (errors = 81) {
+  /*if (errors = 81) {
     document.getElementById("home").click()
-  }
+  }*/
 };
 
 var clicks = 0;
