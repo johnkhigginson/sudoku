@@ -11,6 +11,15 @@ h1 {
   text-align: center;
   font-family: 'Muli', sans-serif;
 }
+h2 {
+  color: #5a7d7c;
+  background-color: #b5b2c2;
+  border: #232c33;
+  padding: 4px 32px;
+  font-size: 24px;
+  text-align: center;
+  font-family: 'Muli', sans-serif;
+}
 p {
   color: #5a7d7c;
 }
@@ -159,6 +168,23 @@ img:hover {
   vertical-align: middle;
   position: relative;
 }
+.staticcell {
+  height: 48px;
+  width: 48px;
+  background: transparent;
+  box-sizing: border-box;
+  font-size: 36px;
+  font-family: 'Muli', sans-serif;
+  padding: 0px;
+  color: #232c33;
+  border: 2px;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+}
 .inputcell:hover {
+  background-color: #5a7d7c;
+}
+.staticcell:hover {
   background-color: #5a7d7c;
 }
