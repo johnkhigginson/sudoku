@@ -3,7 +3,7 @@
     <head>
         <title>Sudoku</title>
         <link rel="icon" type="image/png" href="images/s_favicon.png">
-        <script language="text/javascript" src="data.js"></script>
+        <script language="text/javascript" src="js/data.js"></script>
         <link rel="stylesheet" href="data.css">
         <link href="https://fonts.googleapis.com/css2?family=Muli&display=swap" rel="stylesheet">
         <div class="navbar">
@@ -18,6 +18,11 @@
     </head>
 
     <body>
+      <br>
+      <div class="center">
+        <span id="userData">...</span>
+        <button class="d_link" value="Logout" onclick="logout()">Clear local storage</button>
+      </div>
       <br><br>
       <table cellspacing="0" cellpadding="0" class="center maintable">
         <tbody>
@@ -224,8 +229,10 @@
         <button onclick="check()" class="d_link">Check</button>
         <button onclick="pattern()" class="d_link">Pattern</button>
       </div>
-      <br><br>
-      <script src="data.js"></script>
+      <p id="jsontxt"></p>
+      <br><br><br><br><br><br><br><br><br>
+      <p>footer</p>
+      <script src="js/data.js"></script>
     </body>
     <div class="footer">
       <footer>

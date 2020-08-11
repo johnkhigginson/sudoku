@@ -3,7 +3,6 @@
     <head>
       <title>Sudoku | Description</title>
       <link rel="icon" type="image/png" href="images/s_favicon.png"/>
-      <script language="javascript" src="data.js"></script>
       <link rel="stylesheet" href="data.css">
       <link href="https://fonts.googleapis.com/css2?family=Muli&display=swap" rel="stylesheet">
       <div class="navbar">
@@ -17,6 +16,19 @@
       </div>
     </head>
     <body>
+      <h1>Login</h1>
+      <div class="container blue">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username">
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+
+            <button class="play-button" value="Login" onclick="login()">Play Now</button>
+
+            <span id="errorText"></span>
+      </div>
+      <script type="text/javascript" src="js/index.js"></script>
       <h1>Game Description</h1>
       <br>
       <img src="images/s_description.png" alt="" class="s_image">

@@ -2,7 +2,7 @@
 <html>
   <head>
       <title>Sudoku | Home</title>
-      <script language="text/javascript" src="data.js"></script>
+      <script src="js/data.js"></script>
       <link rel="icon" type="image/png" href="images/s_favicon.png">
       <link rel="stylesheet" href="data.css">
       <link href="https://fonts.googleapis.com/css2?family=Muli&display=swap" rel="stylesheet">
@@ -16,16 +16,19 @@
         <a class="extra" id="check" href="checkpoint.html">Checkpoint</a>
       </div>
   </head>
-//HOME PAGE NOT YET FULLY FUNCTIONAL
   <body>
+    //HOME PAGE NOT YET FULLY FUNCTIONAL
     <h1>✪ Sudoku ✪</h1>
     <br><br><br><br><br>
     <div class="center">
-      <button onclick="easy()" class="home_b">Easy</button>
+      <a class="home_b" href="gameGrid.html">Start</a>
       <p> </p>
-      <button onclick="med()" class="home_b">Medium</button>
+      <br>
+      <button onclick="easy()" id="easy" value="easy" class="home_b">Easy</button>
       <p> </p>
-      <button onclick="hard()" class="home_b">Hard</button>
+      <button onclick="med()" id="med" value="med" class="home_b">Medium</button>
+      <p> </p>
+      <button onclick="hard()" id="hard" value="hard" class="home_b">Hard</button>
     </div>
   </body>
   <div class="footer">
