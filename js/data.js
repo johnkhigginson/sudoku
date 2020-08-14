@@ -75,15 +75,15 @@ var easy3 = {
 
 var med1 = {
   init: [
-    0, 0, 0, 0, 0, 8, 0, 1, 0,
-    6, 0, 0, 0, 0, 1, 0, 7, 0,
-    0, 8, 2, 0, 0, 0, 0, 5, 4,
-    0, 0, 0, 7, 6, 3, 0, 0, 0,
-    5, 0, 9, 4, 0, 2, 3, 0, 7,
-    0, 0, 0, 9, 1, 5, 0, 0, 0,
-    3, 7, 0, 0, 0, 0, 5, 4, 0,
-    0, 5, 0, 3, 0, 0, 0, 0, 2,
-    0, 4, 0, 8, 0, 0, 0, 0, 0
+    0, 0, 0, 0, 0, 1, 0, 1, 0,
+    1, 0, 0, 0, 0, 1, 0, 1, 0,
+    0, 1, 1, 0, 0, 0, 0, 1, 1,
+    0, 0, 0, 1, 1, 1, 0, 0, 0,
+    1, 0, 1, 1, 0, 1, 1, 0, 1,
+    0, 0, 0, 1, 1, 1, 0, 0, 0,
+    1, 1, 0, 0, 0, 0, 1, 1, 0,
+    0, 1, 0, 1, 0, 0, 0, 0, 1,
+    0, 1, 0, 1, 0, 0, 0, 0, 0
   ],
   key: [
     4, 3, 7, 5, 9, 8, 2, 1, 6,
@@ -218,14 +218,21 @@ function hard() {
   document.getElementById("med").style.backgroundColor = "#5a7d7c";
 }
 
-var easyPuzzles = [easy1, easy2, easy3];
-var medPuzzles = [med1, med2, med3];
-var hardPuzzles = [hard1, hard2, hard3];
+var easyPuzzles = ["easy1.json", "easy2.json", "easy3.json"];
+var medPuzzles = ["med1.json", "med2.json", "med3.json"];
+var hardPuzzles = ["hard1.json", "hard2.json", "hard3.json"];
 
-var difficulty = 1;
 var puzzle;
+var current;
+
 function newBoard() {
+  current = 1;
+  seconds = 0;
+  minutes = 0;
+  hours = 0;
+  clearTimeout(t)
   addClick()
+  timer()
   clicks = 0;
   /*resets cell colors and size if pattern was set*/
   for (i = 0; i < cells.length; i++) {
@@ -242,51 +249,56 @@ function newBoard() {
   for (i = 0; i < boardLength; i++) {
     document.getElementById(board[i]).innerHTML = '<div><input  id="' + board[i] + '" class="inputcell" maxlength="1"></div>';
   }
-  console.log(difficulty)
-  //if difficulty = 1, 2, 3 ...
-  /*var path = "games/";
-  if (difficulty == 1) {
-    path = path + easyPuzzles[0];//easyPuzzles[Math.floor(Math.random() * easyPuzzles.length)];
-  }
-  console.log(path)
-  var httpRequest = new XMLHttpRequest();
-  httpRequest.onreadystatechange = function() {
-      if (httpRequest.readyState === 4) {
-            var gameData= JSON.parse(httpRequest.responseText);
-            console.log(gameData)
-          }
-  };
-  httpRequest.open("GET", path);
-  httpRequest.send();*/
 
+  var d = document.getElementById("difficulty");
+  var difficulty = d.options[d.selectedIndex].value;
+
+  //XML request. Pulls game data from JSON files.
+  var path = "./games/";
+  var puzzle;
   if (difficulty == 1) {
-    puzzle = easyPuzzles[Math.floor(Math.random() * easyPuzzles.length)];
+    path = path + easyPuzzles[Math.floor(Math.random() * easyPuzzles.length)];
   }
   if (difficulty == 2) {
-    puzzle = medPuzzles[Math.floor(Math.random() * medPuzzles.length)];
+    path = path + medPuzzles[Math.floor(Math.random() * medPuzzles.length)];
   }
   if (difficulty == 3) {
-    puzzle = hardPuzzles[Math.floor(Math.random() * hardPuzzles.length)];
+    path = path + hardPuzzles[Math.floor(Math.random() * hardPuzzles.length)];
   }
 
-  for (var i = 0; i < puzzle["init"].length; i++) {
-    if (puzzle["init"][i] == 1) {
-      document.getElementById(board[i]).innerHTML = '<div class="staticcell">' + puzzle["key"][i] + '</div>';
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4) {
+    puzzle = JSON.parse(this.responseText);
+  }
+  };
+  xmlhttp.open("GET", path, false);
+  xmlhttp.send();
+
+  var init = puzzle.init;
+  var key = puzzle.key;
+  for (var i = 0; i < init.length; i++) {
+    if (init[i] == 1) {
+      document.getElementById(board[i]).innerHTML = '<div class="staticcell">' + key[i] + '</div>';
     }
-    else if (puzzle["init"][i] == 0) {
+    else if (init[i] == 0) {
       document.getElementById(board[i]).innerHTML = '<input  id="' + board[i] + '" class="inputcell" maxlength="1">'
     }
   }
   var puzzleString = [];
-  for (var i = 0; i < puzzle["key"].length; i++) {
+  for (var i = 0; i < key.length; i++) {
     if (i % 9 == 0) {
-      puzzleString.push("<br>" + puzzle["key"][i]);
+      puzzleString.push("<br>" + key[i]);
     }
     else {
-      puzzleString.push(puzzle["key"][i]);
+      puzzleString.push(key[i]);
     }
   }
   document.getElementById("jsontxt").innerHTML = puzzleString;
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  ctx.font = "30px Impact";
+  ctx.fillText("", 10, 50);
 
 
 };
@@ -308,28 +320,50 @@ function check() {
       }
     }
 
+    var score = 81;
     var empty = [];
     for (i = 0; i < puzzle["key"].length; i++) {
       if (isNaN(currentBoard[i])) {
         empty.push(board[i]);
+        score = score - 1;
       }
       else if (puzzle["key"][i] != currentBoard[i]) {
         document.getElementById(board[i]).style.background = "#D89A9E";
+        score = score - 1;
       }
-      /*else if (samplePuzzle[i] == currentBoard[i]) {
-        correct = correct + 1;
-      }*/
     }
-    /*if (correct = 81) {
-      window.alert("You won!");
-    }*/
-    window.setTimeout(resetter, 3000);
+    if (score > 81) {
+      setTimeout(resetter, 3000);
+    }
+    console.log(score);
+    if (score == 81) {
+      //IF THE PLAYER WINS
+      for (var i = 0; i < boardLength; i++) {
+        document.getElementById(board[i]).innerHTML = '<div class="staticcell">☺</div>';
+        document.getElementById(board[i]).style.background = "green";
+      }
+      var c = document.getElementById("myCanvas");
+      var ctx = c.getContext("2d");
+      ctx.font = "48px Impact";
+      ctx.fillText("You Win!", 10, 50);
+      clearTimeout(t);
+    }
+
 }
 var cells = document.getElementsByClassName("cell");
 var clicks = 0;
 
 function pattern() {
-  clicks = clicks + 1
+  if (current == 1) {
+    var sign = prompt("You are in the middle of a game. This will end it. Continue? (Y/N)", "Y");
+    if (sign == "N") {
+      return;
+    }
+    if (sign == "Y") {
+      current = 0;
+    }
+  }
+  clicks = clicks + 1;
   for (i = 0; i < cells.length; i++) {
     cells[i].style.border = "2px solid black";
   }
@@ -453,7 +487,34 @@ function click() {
   }
   this.style.background = "#66717E";
   console.log("Row: " + iden[0] + " Column: " + iden[1]);
-  window.setTimeout(back, 2500);
+  var w = setTimeout(back, 2500);
+}
+var s = setInterval(function() {
+})
+
+var seconds = 0;
+var minutes = 0;
+var hours = 0;
+var t;
+
+var timeVal = document.getElementById("timer");
+
+function add() {
+  seconds++;
+  if (seconds >= 60) {
+    seconds = 0;
+    minutes++;
+    if (minutes >= 60) {
+      minutes = 0;
+      hours++;
+    }
+  }
+  timeVal.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds >9 ? seconds : "0" + seconds);
+  timer();
+}
+
+function timer() {
+  t = setTimeout(add, 1000);
 }
 
 displayUserData();
