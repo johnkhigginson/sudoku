@@ -22,6 +22,7 @@ h2 {
 }
 p {
   color: #5a7d7c;
+  font-family: 'Muli', sans-serif;
 }
 table {
   border-collapse: collapse;
@@ -187,4 +188,25 @@ img:hover {
 }
 .staticcell:hover {
   background-color: #5a7d7c;
+}
+#difficulty {
+  width: auto;
+}
+.column {
+  float: left;
+  width: 33.33%;
+}
+.row:after {
+  content: "";
+  display:table;
+  clear: both;
+}
+#timer {
+  text-align: center;
+  font-size: 60px;
+}
+#game {
+  text-align:center;
+  font-size: 60px;
+  font-family: impact;
 }
